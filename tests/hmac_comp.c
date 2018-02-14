@@ -67,7 +67,7 @@ test_crypto(int cfd, struct session_op *sess, int datalen)
 	cryp.iv = iv;
 	cryp.mac = mac;
 	cryp.op = COP_ENCRYPT;
-	cryp.flags = COP_FLAG_WRITE_IV;
+	cryp.flags = COP_FLAG_WRITE_IV | COP_FLAG_UPDATE | COP_FLAG_FINAL | COP_FLAG_RESET;
 	if ((ret = ioctl(cfd, CIOCCRYPT, &cryp))) {
 		perror("ioctl(CIOCCRYPT)");
 		goto out;
